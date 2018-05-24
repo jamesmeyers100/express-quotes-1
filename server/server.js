@@ -7,7 +7,7 @@ let bodyParser = require('body-parser');
 const port = 5000;
 let quotes = [{
     quote: "To be, or not to be",
-    author: "Bill Shakespere"
+    author: "Bill Shakespeare"
 }];
 
 //uses
@@ -27,6 +27,7 @@ app.get('/quotes', (req, res) => {
 
 app.post('/quotes', (req, res) => {
     console.log('in app.post', req.body);
-    res.send(quotes);
     quotes.push(req.body);
+    res.send(quotes);
+  
 })

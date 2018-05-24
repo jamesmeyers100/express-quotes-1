@@ -4,6 +4,7 @@ function onReady(){
     console.log(`I'm ready`);
     getQuotes();
     $('#addButton').on('click', addQuote);
+    // $('#refreshButton').on('click', getQuotes);
 }
 
 function getQuotes(){
@@ -13,16 +14,17 @@ function getQuotes(){
         url: '/quotes',
     }).then( function(response){
         console.log('back from server with:', response);
-        // displayQuotes(response);
+        displayQuotes(response);
     });
 }//end getQuote
 
-// function displayQuotes(){
-//     let el = $('#quoteSpot');
-//     for(let quote of quotes){
-//         el.append(`<div>${quote}</div>`);
-//     }// End for
-// }//end displayQuotes
+function displayQuotes(quotes){
+    let el = $('#quoteList');
+    el.empty();
+    for(let quote of quotes){
+        el.append(`<li>"${quote.quote}" - ${quote.author}</li>`);
+    };// End for
+}//end displayQuotes
 
 function addQuote(){
     let objectToSend = {
@@ -37,5 +39,5 @@ function addQuote(){
     }).then(function (response){
         console.log('posting Quote', response);
     });
-    // displayQuotes(response);
+    getQuotes();
 }
