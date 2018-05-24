@@ -22,7 +22,7 @@ function displayQuotes(quotes){
     let el = $('#quoteList');
     el.empty();
     for(let quote of quotes){
-        el.append(`<li>"${quote.quote}" - ${quote.author}</li>`);
+        el.append(`<div class="card-body">"${quote.quote}" - ${quote.author}</div>`);
     };// End for
 }//end displayQuotes
 
